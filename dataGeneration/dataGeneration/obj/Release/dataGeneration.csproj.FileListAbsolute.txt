@@ -1,0 +1,13 @@
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\dataGeneration.exe.config
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\dataGeneration.exe
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\dataGeneration.pdb
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\HtmlAgilityPack.dll
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\MySql.Data.dll
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\HtmlAgilityPack.pdb
+D:\software\winform\dataGeneration\dataGeneration\bin\Release\HtmlAgilityPack.xml
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.MainForm.resources
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.Properties.Resources.resources
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.WriteLinkInfoForm.resources
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.csproj.GenerateResource.Cache
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.exe
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.pdb
