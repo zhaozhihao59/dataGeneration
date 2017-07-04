@@ -141,7 +141,7 @@ namespace dataGeneration
 
         private void initTableTree(DataTable dt)
         {
-
+            this.tv_tableList.Nodes.Clear();
             foreach (DataRow row in dt.Rows)
             {
                 TreeNode node = new TreeNode();
@@ -321,47 +321,53 @@ namespace dataGeneration
                             {
                                 reduceList.Add(reduceMap[curIndex]);
                             }
+                            if(preNode != null || preNode.Parent != null){
 
-
-                            String preCurIndex = (preNode.Parent.Index * 10).ToString() + preNode.Index.ToString();
-                            if (curIndex == preCurIndex)
-                            {
-                                DataReduce curTemp = reduceMap[curIndex];
-                                if (curTemp.Type == "String")
+                                String preCurIndex = (preNode.Parent.Index * 10).ToString() + preNode.Index.ToString();
+                                if (curIndex == preCurIndex)
                                 {
-                                    curTemp.GenerationType = this.cbb_str.SelectedIndex;
-                                    if (curTemp.GenerationType != 0)
+                                    DataReduce curTemp = reduceMap[curIndex];
+                                    if (curTemp.Type == "String")
                                     {
-                                        StrModel map = (StrModel)this.cbb_str.SelectedItem;
-                                        curTemp.Generation = map.FileName;
+                                        curTemp.GenerationType = this.cbb_str.SelectedIndex;
+                                        if (curTemp.GenerationType != 0)
+                                        {
+                                            StrModel map = (StrModel)this.cbb_str.SelectedItem;
+                                            curTemp.Generation = map.FileName;
+                                        }
+
                                     }
+                                    else if (curTemp.Type == "date")
+                                    {
+                                        curTemp.StartDate = this.dtp_start.Value;
 
-                                }else if(curTemp.Type == "date"){
-                                    curTemp.StartDate = this.dtp_start.Value;
+                                        curTemp.EndDate = this.dtp_end.Value;
+                                    }
+                                    else if (curTemp.Type == "number")
+                                    {
+                                        DataRow tempRow = (DataRow)preNode.Tag;
+                                        String curColumnType = tempRow["columnType"].ToString();
 
-                                    curTemp.EndDate = this.dtp_end.Value;
+                                        if (curColumnType.IndexOf("unsigned") >= 0)
+                                        {
+                                            curTemp.Min = (this.tb_min.Text == "" || Int32.Parse(this.tb_min.Text) < 0 ? 0 : Int32.Parse(this.tb_min.Text));
+
+                                        }
+                                        else
+                                        {
+                                            curTemp.Min = (this.tb_min.Text == "" ? Int32.MinValue : Int32.Parse(this.tb_min.Text));
+
+                                        }
+
+                                        curTemp.Max = this.tb_max.Text == "" ? Int32.MaxValue : Int32.Parse(this.tb_max.Text);
+                                        curTemp.Zzz = this.tb_zzzNum.Text == "" ? 1 : Int32.Parse(this.tb_zzzNum.Text);
+                                        curTemp.Seed = (this.tb_seed.Text == "" ? curTemp.Seed : Int32.Parse(this.tb_seed.Text));
+                                    }
                                 }
-                                else if (curTemp.Type == "number")
-                                {
-                                    DataRow tempRow = (DataRow)preNode.Tag;
-                                    String curColumnType = tempRow["columnType"].ToString();
 
-                                    if (curColumnType.IndexOf("unsigned") >= 0)
-                                    {
-                                        curTemp.Min = (this.tb_min.Text == "" || Int32.Parse(this.tb_min.Text) < 0 ? 0 : Int32.Parse(this.tb_min.Text));
-
-                                    }
-                                    else
-                                    {
-                                        curTemp.Min = (this.tb_min.Text == "" ? Int32.MinValue : Int32.Parse(this.tb_min.Text));
-
-                                    }
-
-                                    curTemp.Max = this.tb_max.Text == "" ? Int32.MaxValue : Int32.Parse(this.tb_max.Text);
-                                    curTemp.Zzz = this.tb_zzzNum.Text == "" ? 1 : Int32.Parse(this.tb_zzzNum.Text);
-                                    curTemp.Seed = (this.tb_seed.Text == "" ? curTemp.Seed : Int32.Parse(this.tb_seed.Text));
-                                }
                             }
+
+                            
                             
                         }
                     }
