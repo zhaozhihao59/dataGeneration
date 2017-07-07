@@ -34,7 +34,19 @@ namespace dataGeneration
             DataTable indexDt = DBHelper.getDataTable(sql);
             Dictionary<String, DataRow> indexMap = new Dictionary<string, DataRow>();
             foreach(DataRow row in indexDt.Rows){
-                indexMap.Add(row["Column_name"].ToString(),row);
+                String field = row["Column_name"].ToString();
+                if (indexMap.ContainsKey(field))
+                {
+                    DataRow old = indexMap[field];
+                    if (Int32.Parse(old["Seq_in_index"].ToString()) == 1)
+                    {
+                        indexMap.Remove(field);
+                        indexMap.Add(field,row);
+                    }
+                }
+                else {
+                    indexMap.Add(field,row);
+                }
             }
             dt.Columns.Add("fieldName");
             dt.Columns.Add("unique");
@@ -45,7 +57,9 @@ namespace dataGeneration
                 string dbFeild = row["columnName"].ToString();
                 
                 row["fieldName"] = convertFeildName(dbFeild,false);
-                if(indexMap.ContainsKey(dbFeild)){
+                String curIndex = tableName + "." + dbFeild;
+                if (indexMap.ContainsKey(dbFeild))
+                {
                     row["unique"] = indexMap[dbFeild]["Non_unique"];
                     row["keyName"] = indexMap[dbFeild]["Key_name"];
                     row["seqInIndex"] = indexMap[dbFeild]["Seq_in_index"];

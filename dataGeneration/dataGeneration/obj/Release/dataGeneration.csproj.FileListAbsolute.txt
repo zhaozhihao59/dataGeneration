@@ -11,3 +11,4 @@ D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.Wri
 D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.csproj.GenerateResource.Cache
 D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.exe
 D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.pdb
+D:\software\winform\dataGeneration\dataGeneration\obj\Release\dataGeneration.csprojResolveAssemblyReference.cache

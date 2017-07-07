@@ -9,6 +9,5 @@ D:\software\winform\dataGeneration\dataGeneration\bin\Debug\dataGeneration.pdb
 D:\software\winform\dataGeneration\dataGeneration\bin\Debug\MySql.Data.dll
 D:\software\winform\dataGeneration\dataGeneration\obj\Debug\dataGeneration.exe
 D:\software\winform\dataGeneration\dataGeneration\obj\Debug\dataGeneration.pdb
-D:\software\winform\dataGeneration\dataGeneration\bin\Debug\HtmlAgilityPack.dll
 D:\software\winform\dataGeneration\dataGeneration\bin\Debug\HtmlAgilityPack.pdb
 D:\software\winform\dataGeneration\dataGeneration\bin\Debug\HtmlAgilityPack.xml
